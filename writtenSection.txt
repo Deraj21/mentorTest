@@ -1,29 +1,35 @@
 Answer each question in a written format
 
 1. What does semantic HTML mean?
-
+    Semantics with HTML means that when I am naming classNames for elements like a div or a button, I'm going to give is a name that makes sense for that particular container, so that later down the road, I or other developers will understand what the element is for. For example, if I have a ul that li's for a shopping list, the className would be "shopping-list".
 2. What is the box model?
-
+    The box model is a box that every html element has, that describes how much space is in and around it. Margin, border, padding, and content are all part of the box model. The margin is how much the element 'pushes' out from the border; border is the line surrounding the element; padding is how much the element 'pushes' in from the border. And the content is in the center of the element.
 3. What is the difference between IDs and Classes?
-
+    ID's are used once, where a class can be used as many times as needed.
 4. What is z-index (CSS property) useful for?
-
+    z-index tells an element which layer it should be on. It is used to move elements front of, or behind other elements.
 5. Summarize what the keyword 'this' is used for?
-
+    The keyword 'this' is used for setting the context in javascript code. Using the ‘this’ keyword in a function, I can use that function on as many objects that I want, without messing with data from any other objects. Because I used the ‘this’ keyword, the function knows to deal with the data in the object it is currently operating with.
+    Example:
+        function printName() { console.log(this.name); }
+        {name: “Jared Tanner”}.printName(); // prints ‘Jared Tanner’
+        {name: “Rudolf”}.printName(); // prints ‘Rudolf’
 6. What is a callback? What are common uses for callbacks in JavaScript?
-
+    A callback is a reference to a function that is passed into a function for use in the function. A common use is array prototype functions, like Array.filter(). It takes in a callback function that is called on each item in the array. If the function returns true, the item is added to the array that gets returned at the end of the loop.
 7. What is a closure and why is it useful?
-
+    When returning a function inside another function, JavaScript makes a 'closure' or a snapshot of the outer function coupled with all the needed data, so that when the inner function is used later, it doesn't throw an error. Every time we use the outer function, a different closure is made, which allows the programmer to reuse this outer function to make multiple versions of the inner function that is returned. They each have their own data, and don’t affect each other when ran.
 8. How does a prototype work?
-
+    A prototype is a function that can be added to a data-type, like a String or Array, or a class (or constructor functions). Every instance of that data-type or class will then have that function available to call on itself.
 9. Describe what a component-based framework/library is?
-
+    A component-based framework is a framework that focuses on breaking up code into smaller chunks, so that it is easier to manage, and so that code can be used repeatedly.
 10. What is the component lifecycle in React?
-
+    The component lifecycle can be described as a set of methods that every react Component has, that are called at certain times during the Component’s life. These include componentDidMount(), componentDidUpdate(), componentWillMount(), etc. The name of the method describes when it will be called. For example, the ‘componentDidMount()’ is ran right after the component mounts for the first time; this method in particular is often used for grabbing data from the server, once the component has loaded the first time.
 11. What is REST? (not just a description of the acronym)
-
+    It is a style or system of creating, receiving, editing, or deleting data at a URL. The methods used to do this are GET (receive), POST (create), PUT (edit), and DELETE (delete). REST is used to create backend 
 12. Name three common ways of getting data from a request (in Express.JS):
-
+    req.body: data in the body of the request, sent as a JSON
+    req.params: data in the form of a parameter in the url. Ex: “/api/homes/:id”
+    req.query: data in the form of a query in a url. Ex: “/api/dogs?breed=lab”
 
 
 -- =====================
@@ -37,9 +43,16 @@ email varchar(255)
 13. Given the Schema above, write the following four basic CRUD db queries using postgres syntax
 
 -Get all users:
+  Select * from users;
 
 -Create a new user with the name of 'your name' and an email of 'fake@fake.com':
+  insert into users (name, email)
+    values (‘Jared Tanner’, ‘fake@fake.com’);
 
 -Update the newly created user's name to 'Bobby Boy':
+  update users
+    set name = ‘Bobby Boy’ where id = 1;
 
 -Delete the newly updated user:
+  delete from users
+    where id = 1;
